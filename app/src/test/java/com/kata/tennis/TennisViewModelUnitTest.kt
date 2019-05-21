@@ -26,14 +26,14 @@ class TennisViewModelUnitTest {
     }
 
     @Test
-    fun testIfPlayerOneHasScoredFirstTwoPoints(){
+    fun testIfPlayerOneHasScoredFirstTwoPoints() {
         tennisViewModel.playerOneScores()
         tennisViewModel.playerOneScores()
         assertEquals("30 - 0", tennisViewModel.getMatchScore())
     }
 
     @Test
-    fun testIfPlayerTwoHasScoredFirstThreePoints(){
+    fun testIfPlayerTwoHasScoredFirstThreePoints() {
         tennisViewModel.playerTwoScores()
         tennisViewModel.playerTwoScores()
         tennisViewModel.playerTwoScores()
@@ -48,11 +48,22 @@ class TennisViewModelUnitTest {
     }
 
     @Test
-    fun testShouldReturnAllInScoreIfBothPlayersScoresEqualPoints(){
+    fun testShouldReturnAllInScoreIfBothPlayersScoresEqualPoints() {
         tennisViewModel.playerTwoScores()
         tennisViewModel.playerOneScores()
         tennisViewModel.playerOneScores()
         tennisViewModel.playerTwoScores()
         assertEquals("30 all", tennisViewModel.getMatchScore())
+    }
+
+    @Test
+    fun testShouldReturnDeuceIfBothPlayersScoresThreePointsEach() {
+        tennisViewModel.playerOneScores()
+        tennisViewModel.playerOneScores()
+        tennisViewModel.playerOneScores()
+        tennisViewModel.playerTwoScores()
+        tennisViewModel.playerTwoScores()
+        tennisViewModel.playerTwoScores()
+        assertEquals("Deuce", tennisViewModel.getMatchScore())
     }
 }
