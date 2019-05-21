@@ -27,6 +27,7 @@ class TennisViewModel: ViewModel(){
         when(points) {
             0 -> return "0"
             1 -> return "15"
+            2 -> return "30"
         }
         return ""
     }
