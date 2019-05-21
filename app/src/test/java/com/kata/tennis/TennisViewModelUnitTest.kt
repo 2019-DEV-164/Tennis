@@ -19,4 +19,10 @@ class TennisViewModelUnitTest {
         tennisViewModel.playerOneScores()
         assertEquals("15", tennisViewModel.checkPlayerOneScore())
     }
+
+    @Test
+    fun testPlayerTwoWinsFirstBall() {
+        tennisViewModel.playerTwoScores()
+        assertEquals("15", tennisViewModel.checkPlayerTwoScore())
+    }
 }
