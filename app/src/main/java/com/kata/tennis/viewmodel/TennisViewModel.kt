@@ -5,6 +5,17 @@ import com.kata.tennis.model.Players
 
 class TennisViewModel : ViewModel() {
 
+    companion object {
+        const val POINT_LOVE = "0"
+        const val POINT_ONE = "15"
+        const val POINT_TWO = "30"
+        const val POINT_THREE = "40"
+        const val POINT_EQUAL = "All"
+        const val MATCH_STATUS_DEUCE = "Deuce"
+        const val MATCH_STATUS_ADVANTAGE = "Advantage"
+        const val MATCH_STATUS_WON = "Wins"
+    }
+
     var playerOnePoints = 0
     var playerTwoPoints = 0
 
@@ -19,19 +30,19 @@ class TennisViewModel : ViewModel() {
     fun getMatchScore(): String {
 
         if(playerHasWon()){
-            return playerWithHighestScore() + " " + "Wins"
+            return playerWithHighestScore() + " " + MATCH_STATUS_WON
         }
 
         if (playerHasAdvantage()) {
-            return "Advantage" + " " + playerWithHighestScore()
+            return MATCH_STATUS_ADVANTAGE + " " + playerWithHighestScore()
         }
 
         if (isDeuce()) {
-            return "Deuce"
+            return MATCH_STATUS_DEUCE
         }
 
         if (playerOnePoints == playerTwoPoints) {
-            return convertPointsToScore(playerOnePoints) + " all"
+            return convertPointsToScore(playerOnePoints) + " " + POINT_EQUAL
         }
 
         return convertPointsToScore(playerOnePoints) + " - " + convertPointsToScore(playerTwoPoints)
@@ -71,10 +82,10 @@ class TennisViewModel : ViewModel() {
 
     private fun convertPointsToScore(points: Int): String {
         when (points) {
-            0 -> return "0"
-            1 -> return "15"
-            2 -> return "30"
-            3 -> return "40"
+            0 -> return POINT_LOVE
+            1 -> return POINT_ONE
+            2 -> return POINT_TWO
+            3 -> return POINT_THREE
         }
         return ""
     }
