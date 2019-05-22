@@ -69,7 +69,7 @@ class TennisViewModelUnitTest {
         assertEquals(TennisViewModel.MATCH_STATUS_ADVANTAGE + " " + Players.PLAYER_TWO_NAME,
             tennisViewModel.getMatchScore())
     }
-    
+
     @Test
     fun testShouldReturnAdvantageIfAnyPlayerScoresAPointAfterDeuce() {
         recordPoints(4, 3)
