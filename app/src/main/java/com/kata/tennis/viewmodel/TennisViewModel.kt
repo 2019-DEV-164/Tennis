@@ -109,4 +109,9 @@ class TennisViewModel : ViewModel() {
         }
         return ""
     }
+
+    fun resetScore(){
+        playerOnePoints = 0
+        playerTwoPoints = 0
+    }
 }

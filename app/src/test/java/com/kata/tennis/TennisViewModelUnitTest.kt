@@ -5,9 +5,15 @@ import com.kata.tennis.viewmodel.TennisViewModel
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Before
 
 class TennisViewModelUnitTest {
     private var tennisViewModel = TennisViewModel()
+
+    @Before
+    fun resetScore() {
+        tennisViewModel.resetScore()
+    }
 
     @Test
     fun testShouldCheckIfPlayersPointsAreAtLoveForNewGame() {
