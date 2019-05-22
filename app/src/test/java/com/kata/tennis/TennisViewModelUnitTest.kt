@@ -64,6 +64,13 @@ class TennisViewModelUnitTest {
     }
 
     @Test
+    fun testShouldReturnAdvantagePlayerTwoIfTheyScoreAPointAfterDeuce() {
+        recordPoints(3, 4)
+        assertEquals(TennisViewModel.MATCH_STATUS_ADVANTAGE + " " + Players.PLAYER_TWO_NAME,
+            tennisViewModel.getMatchScore())
+    }
+    
+    @Test
     fun testShouldReturnAdvantageIfAnyPlayerScoresAPointAfterDeuce() {
         recordPoints(4, 3)
         assertEquals(TennisViewModel.MATCH_STATUS_ADVANTAGE + " " + Players.PLAYER_ONE_NAME,
@@ -75,6 +82,12 @@ class TennisViewModelUnitTest {
         recordPoints(3, 5)
         assertEquals(Players.PLAYER_TWO_NAME + " " + TennisViewModel.MATCH_STATUS_WON,
             tennisViewModel.getMatchScore())
+    }
+
+    @Test
+    fun testShouldReturnPlayerOneWinsIfTheyScoreAPointAfterAdvantage() {
+        recordPoints(5, 3)
+        assertEquals(Players.PLAYER_ONE_NAME + " " + TennisViewModel.MATCH_STATUS_WON, tennisViewModel.getMatchScore())
     }
 
     private fun recordPoints(playerOne: Int, playerTwo: Int){
