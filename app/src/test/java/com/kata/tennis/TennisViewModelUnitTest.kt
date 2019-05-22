@@ -1,5 +1,6 @@
 package com.kata.tennis
 
+import com.kata.tennis.model.Players
 import com.kata.tennis.viewmodel.TennisViewModel
 import org.junit.Test
 
@@ -76,7 +77,8 @@ class TennisViewModelUnitTest {
         tennisViewModel.playerTwoScores()
         tennisViewModel.playerTwoScores()
         tennisViewModel.playerOneScores()
-        assertEquals("Advantage", tennisViewModel.getMatchScore())
+        assertEquals("Advantage" + " " + Players.PLAYER_ONE_NAME,
+            tennisViewModel.getMatchScore())
     }
 
     @Test
@@ -89,6 +91,7 @@ class TennisViewModelUnitTest {
         tennisViewModel.playerTwoScores()
         tennisViewModel.playerTwoScores()
         tennisViewModel.playerTwoScores()
-        assertEquals("Win", tennisViewModel.getMatchScore())
+        assertEquals(Players.PLAYER_TWO_NAME + " " + "Wins",
+            tennisViewModel.getMatchScore())
     }
 }

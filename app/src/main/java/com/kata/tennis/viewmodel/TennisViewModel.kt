@@ -1,6 +1,7 @@
 package com.kata.tennis.viewmodel
 
 import android.arch.lifecycle.ViewModel
+import com.kata.tennis.model.Players
 
 class TennisViewModel : ViewModel() {
 
@@ -18,11 +19,11 @@ class TennisViewModel : ViewModel() {
     fun getMatchScore(): String {
 
         if(playerHasWon()){
-            return "Win"
+            return playerWithHighestScore() + " " + "Wins"
         }
 
         if (playerHasAdvantage()) {
-            return "Advantage"
+            return "Advantage" + " " + playerWithHighestScore()
         }
 
         if (isDeuce()) {
@@ -34,6 +35,14 @@ class TennisViewModel : ViewModel() {
         }
 
         return convertPointsToScore(playerOnePoints) + " - " + convertPointsToScore(playerTwoPoints)
+    }
+
+    private fun playerWithHighestScore(): String {
+        if(playerOnePoints > playerTwoPoints){
+            return Players.PLAYER_ONE_NAME
+        } else{
+            return Players.PLAYER_TWO_NAME
+        }
     }
 
     private fun playerHasWon(): Boolean {
