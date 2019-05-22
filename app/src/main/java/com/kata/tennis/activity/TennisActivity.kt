@@ -18,7 +18,7 @@ class TennisActivity : AppCompatActivity(), View.OnClickListener {
         tennisViewModel = TennisViewModel()
         point_to_player_one.setOnClickListener(this)
         point_to_player_two.setOnClickListener(this)
-        restart_set.setOnClickListener(this)
+        restart_game.setOnClickListener(this)
 
         updateScoreOnUi()
     }
@@ -35,7 +35,7 @@ class TennisActivity : AppCompatActivity(), View.OnClickListener {
                 updateScoreOnUi()
             }
 
-            R.id.restart_set -> {
+            R.id.restart_game -> {
                 tennisViewModel.resetScore()
                 updateScoreOnUi()
             }
