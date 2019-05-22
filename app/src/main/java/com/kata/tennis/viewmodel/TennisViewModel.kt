@@ -16,6 +16,11 @@ class TennisViewModel : ViewModel() {
     }
 
     fun getMatchScore(): String {
+
+        if(playerHasWon()){
+            return "Win"
+        }
+
         if (playerHasAdvantage()) {
             return "Advantage"
         }
@@ -23,10 +28,22 @@ class TennisViewModel : ViewModel() {
         if (isDeuce()) {
             return "Deuce"
         }
+
         if (playerOnePoints == playerTwoPoints) {
             return convertPointsToScore(playerOnePoints) + " all"
         }
+
         return convertPointsToScore(playerOnePoints) + " - " + convertPointsToScore(playerTwoPoints)
+    }
+
+    private fun playerHasWon(): Boolean {
+        if (playerOnePoints >= 4 && playerOnePoints >= playerTwoPoints + 2) {
+            return true
+        }
+        if (playerTwoPoints >= 4 && playerTwoPoints >= playerOnePoints + 2) {
+            return true
+        }
+        return false
     }
 
     private fun playerHasAdvantage(): Boolean {
